@@ -233,6 +233,7 @@ The spacing system is based on a **4px unit increment**, following modern design
 | **16px** | 4 | Standard gaps (card padding internal) |
 | **20px** | 5 | Grid gaps, gaps between cards |
 | **24px** | 6 | Card padding, section spacing |
+| **32px** | 8 | Link bento icon-to-text gap |
 | **40px** | 10 | Grid margin-bottom, section breaks |
 | **60px** | 15 | Header section margin-bottom |
 
@@ -924,8 +925,9 @@ The design uses a **4-tier Bento size system** with fixed heights for consistent
 #### Size 0.5: Link Bento
 - **Grid:** 2 columns (100% width)
 - **Height:** 96px (fixed, compact)
-- **Layout:** Horizontal flex (icon on left, content on right)
+- **Layout:** Horizontal flex (icon on left, content on right, left-aligned)
 - **Grid Span:** `span 2`
+- **Gap:** 32px between icon and text
 - **Cards:** Featured link banners, featured content, quick highlights
 - **Use Case:** Top-of-page highlights, featured links, quick navigation
 
@@ -936,7 +938,8 @@ The design uses a **4-tier Bento size system** with fixed heights for consistent
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 40px;
+  justify-content: flex-start;
+  gap: 32px;
 }
 
 .card-size-0-5 .card-icon {
@@ -945,13 +948,31 @@ The design uses a **4-tier Bento size system** with fixed heights for consistent
 }
 ```
 
+**Featured Link Card (X.com Example):**
+```css
+.featured-link-card {
+  background: #ffffff;
+}
+
+.featured-link-icon {
+  background-color: #000;
+  color: white;
+}
+```
+
 **Visual:**
 ```
 ┌────────────────────────────────────┐
-│ [Icon]    Featured Link Text        │
-│  96px (compact with breathing room) │
+│ [Icon] x.com/nattsaro               │
+│ 48×48  (32px gap) (16px text)      │
 └────────────────────────────────────┘
 ```
+
+**Implementation Notes:**
+- Icon: 48×48px with 12px border-radius
+- Inner image: 24×24px, centered in icon, rotated for visual interest
+- Text: 16px font size (inherits from .card-title), left-aligned, white background
+- Image container uses `overflow: hidden` and `position: relative` for proper rendering
 
 #### Size 1: Standard Single Card
 - **Grid:** 1 column (50% width)
@@ -1234,6 +1255,56 @@ Location/map visualization
 ## Example Component Code
 
 ### Complete Card Examples
+
+#### Example 0: Link Bento (X.com)
+
+```html
+<a href="https://x.com/nattsaro" class="card featured-link-card card-size-0-5" target="_blank">
+  <div class="card-icon featured-link-icon" style="overflow: hidden; position: relative; display: flex; align-items: center; justify-content: center;">
+    <div style="width: 24px; height: 24px; position: relative; transform: rotate(327.393deg);">
+      <img src="http://localhost:3845/assets/a99953e99e3955ac18f039912cf770c84520f8ce.png" alt="X Logo" style="width: 100%; height: 100%; object-fit: cover;">
+    </div>
+  </div>
+  <div class="card-title" style="margin-bottom: 0; text-align: left;">x.com/nattsaro</div>
+</a>
+```
+
+**CSS:**
+```css
+.featured-link-card {
+  background: #ffffff;
+}
+
+.featured-link-icon {
+  background-color: #000;
+  color: white;
+}
+
+.card-size-0-5 {
+  grid-column: span 2;
+  height: 96px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 32px;
+}
+
+.card-size-0-5 .card-icon {
+  margin-bottom: 0;
+  flex-shrink: 0;
+}
+```
+
+**Key Features:**
+- Featured link banner at top of profile
+- Icon contains image asset (24×24px) centered in 48×48px icon
+- Image rotated 327.393° for visual interest
+- Text left-aligned with 32px spacing from icon
+- Full-width spanning (2 grid columns)
+- Compact height (96px) for quick navigation links
+
+---
 
 #### Example 1: Simple Icon Card (LinkedIn)
 
