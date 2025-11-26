@@ -417,26 +417,36 @@ Secondary content label within cards.
 }
 ```
 
-### Card Button
+### Card Button (Unified Style)
 
-Call-to-action buttons within cards (Follow, Play, etc.).
+Call-to-action buttons within cards (Follow, Play, etc.). All buttons use unified styling with platform-specific colors.
 
+**Base Button Style:**
 ```css
 .card-button {
-  align-self: flex-start;
-  padding: 8px 16px;
-  border-radius: 20px;
+  padding: 8px 16px;              /* Consistent padding */
+  border-radius: 20px;             /* Pill-shaped */
   border: none;
   font-size: 14px;
-  font-weight: 100;
+  font-weight: 100;                /* Light weight */
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.2s ease;       /* Smooth transitions */
+  margin-top: auto;                /* Push to bottom of card */
+  align-self: flex-start;          /* Button width only, not full width */
 }
 ```
 
-**Platform Button Colors:**
+**Platform-Specific Colors (Unified Styling):**
+
+| Platform | Color | Hex | Usage |
+|----------|-------|-----|-------|
+| **GitHub** | Light Grey | `#f0f0f0` | Follow button |
+| **Twitter** | Sky Blue | `#55ACEE` | Follow button |
+| **Spotify** | Green | `#1ED760` | Play button |
+| **Behance** | Blue | `#2F65EE` | Follow button |
 
 ```css
+/* All buttons use same base style, only background color changes */
 .github-card .card-button {
   background-color: #f0f0f0;
   color: #000;
@@ -447,11 +457,24 @@ Call-to-action buttons within cards (Follow, Play, etc.).
   color: white;
 }
 
+.spotify-card .play-button {
+  background-color: #1ED760;
+  color: white;
+}
+
 .behance-card .card-button {
   background-color: #2F65EE;
   color: white;
 }
 ```
+
+**Button Specifications:**
+- **Size:** Medium (8px × 16px padding)
+- **Shape:** Pill-shaped (20px border-radius)
+- **Weight:** Light (100)
+- **Text Color:** White (or black for light backgrounds)
+- **Position:** Bottom-left of card (margin-top: auto, align-self: flex-start)
+- **Transition:** 0.2s ease for smooth hover effects
 
 ### Play Button (Spotify Special)
 
@@ -900,7 +923,7 @@ The design uses a **3-tier Bento size system** with fixed heights for consistent
 
 #### Size 1: Standard Single Card
 - **Grid:** 1 column (50% width)
-- **Height:** 200px (fixed)
+- **Height:** 240px (fixed)
 - **Layout:** Vertical (flex-column)
 - **Grid Span:** `span 1`
 - **Cards:** LinkedIn, GitHub, Spotify, Twitter, Behance, Twitch, Figma, LeetCode
@@ -908,7 +931,7 @@ The design uses a **3-tier Bento size system** with fixed heights for consistent
 ```css
 .card-size-1 {
   grid-column: span 1;
-  height: 200px;
+  height: 240px;
 }
 ```
 
@@ -916,13 +939,13 @@ The design uses a **3-tier Bento size system** with fixed heights for consistent
 ```
 ┌─────────┬─────────┐
 │ Size 1  │ Size 1  │
-│ 200px   │ 200px   │
+│ 240px   │ 240px   │
 └─────────┴─────────┘
 ```
 
 #### Size 2: Double-Width Card (Content + Media)
 - **Grid:** 2 columns (100% width)
-- **Height:** 200px (fixed, same as Size 1)
+- **Height:** 240px (fixed, same as Size 1)
 - **Layout:** Horizontal (flex-row) with content on left, media on right
 - **Grid Span:** `span 2`
 - **Cards:** YouTube, Portfolio
@@ -930,7 +953,7 @@ The design uses a **3-tier Bento size system** with fixed heights for consistent
 ```css
 .card-size-2 {
   grid-column: span 2;
-  height: 200px;
+  height: 240px;
   flex-direction: row;
 }
 ```
@@ -939,13 +962,13 @@ The design uses a **3-tier Bento size system** with fixed heights for consistent
 ```
 ┌────────────────────────┐
 │ Content │ Thumbnail    │
-│ 200px   │ 200px        │
+│ 240px   │ 240px        │
 └────────────────────────┘
 ```
 
 #### Size 4: Featured Card (Double Height)
 - **Grid:** 2 columns (100% width)
-- **Height:** 400px (fixed, 2× Size 1)
+- **Height:** 480px (fixed, 2× Size 1)
 - **Layout:** Flexible (typically vertical for featured content)
 - **Grid Span:** `span 2`
 - **Cards:** Map, Instagram
@@ -954,7 +977,7 @@ The design uses a **3-tier Bento size system** with fixed heights for consistent
 ```css
 .card-size-4 {
   grid-column: span 2;
-  height: 400px;
+  height: 480px;
   flex-direction: column;
 }
 ```
@@ -964,7 +987,7 @@ The design uses a **3-tier Bento size system** with fixed heights for consistent
 ┌──────────────────────┐
 │                      │
 │     Size 4 Card      │
-│     400px (2x)       │
+│     480px (2x)       │
 │                      │
 └──────────────────────┘
 ```
@@ -1005,11 +1028,11 @@ grid-column: span 2;  /* Takes up both columns (100% width) */
 
 | Size | Fixed Height | Ratio | Usage |
 |------|------------|-------|-------|
-| **Size 1** | 200px | 1x | Standard cards, default content |
-| **Size 2** | 200px | 1x | Media cards (same height as Size 1) |
-| **Size 4** | 400px | 2x | Featured/hero cards, detailed content |
+| **Size 1** | 240px | 1x | Standard cards, default content |
+| **Size 2** | 240px | 1x | Media cards (same height as Size 1) |
+| **Size 4** | 480px | 2x | Featured/hero cards, detailed content |
 
-**Note:** All heights are fixed (`height: 200px`/`height: 400px`), never using `min-height`, ensuring consistent alignment and layout predictability.
+**Note:** All heights are fixed (`height: 240px`/`height: 480px`), never using `min-height`, ensuring consistent alignment and layout predictability.
 
 ---
 
