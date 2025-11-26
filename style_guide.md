@@ -919,7 +919,30 @@ The card grid uses CSS Grid with a 2-column layout and fixed-height Bento card s
 
 ### Bento Size System
 
-The design uses a **3-tier Bento size system** with fixed heights for consistent, predictable layouts:
+The design uses a **4-tier Bento size system** with fixed heights for consistent, predictable layouts:
+
+#### Size 0.5: Compact Banner
+- **Grid:** 2 columns (100% width)
+- **Height:** 120px (fixed, 0.5x Size 1)
+- **Layout:** Flexible (typically centered content)
+- **Grid Span:** `span 2`
+- **Cards:** Featured banners, announcements, quick promotions
+- **Use Case:** Top-of-page highlights, temporary announcements, promotional content
+
+```css
+.card-size-0-5 {
+  grid-column: span 2;
+  height: 120px;
+}
+```
+
+**Visual:**
+```
+┌──────────────────────┐
+│   Compact Banner     │
+│      120px (0.5x)    │
+└──────────────────────┘
+```
 
 #### Size 1: Standard Single Card
 - **Grid:** 1 column (50% width)
@@ -997,20 +1020,22 @@ The design uses a **3-tier Bento size system** with fixed heights for consistent
 Typical arrangement with mixed Bento sizes:
 
 ```
-┌─────────┬─────────┐
-│ Size 1  │ Size 1  │  Row 1: 2 standard cards
-├─────────┼─────────┤
+├──────────────────┤
+│    Size 0.5      │  Row 1: Compact banner at top
+├─────────┬─────────┤
 │ Size 1  │ Size 1  │  Row 2: 2 standard cards
+├─────────┼─────────┤
+│ Size 1  │ Size 1  │  Row 3: 2 standard cards
 ├──────────────────┤
-│      Size 2       │  Row 3: 1 double-width card
+│      Size 2       │  Row 4: 1 double-width card
 ├──────────────────┤
-│                  │  Row 4: 1 featured card (2x height)
+│                  │  Row 5: 1 featured card (2x height)
 │     Size 4       │
 │                  │
 ├──────────────────┤
-│      Size 2       │  Row 5: Another double-width card
+│      Size 2       │  Row 6: Another double-width card
 ├─────────┬─────────┤
-│ Size 1  │ Size 1  │  Row 6: 2 standard cards again
+│ Size 1  │ Size 1  │  Row 7: 2 standard cards again
 └─────────┴─────────┘
 ```
 
@@ -1028,11 +1053,18 @@ grid-column: span 2;  /* Takes up both columns (100% width) */
 
 | Size | Fixed Height | Ratio | Usage |
 |------|------------|-------|-------|
+| **Size 0.5** | 120px | 0.5x | Compact banners, announcements |
 | **Size 1** | 240px | 1x | Standard cards, default content |
 | **Size 2** | 240px | 1x | Media cards (same height as Size 1) |
 | **Size 4** | 480px | 2x | Featured/hero cards, detailed content |
 
-**Note:** All heights are fixed (`height: 240px`/`height: 480px`), never using `min-height`, ensuring consistent alignment and layout predictability.
+**Note:** All heights are fixed (`height: 120px`/`height: 240px`/`height: 480px`), never using `min-height`, ensuring consistent alignment and layout predictability.
+
+**Height Relationships:**
+- Size 0.5 = 120px (smallest)
+- Size 1 = 240px (2× Size 0.5)
+- Size 2 = 240px (same as Size 1)
+- Size 4 = 480px (2× Size 1, 4× Size 0.5)
 
 ---
 
