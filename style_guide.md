@@ -882,7 +882,7 @@ transition: all 0.2s ease;
 
 ### Main Grid Container
 
-The card grid uses CSS Grid for flexible, responsive layouts.
+The card grid uses CSS Grid with a 2-column layout and fixed-height Bento card system.
 
 **Grid Configuration:**
 ```css
@@ -894,51 +894,122 @@ The card grid uses CSS Grid for flexible, responsive layouts.
 }
 ```
 
-### Column Span System
+### Bento Size System
 
-Cards use `grid-column: span` to control width:
+The design uses a **3-tier Bento size system** with fixed heights for consistent, predictable layouts:
+
+#### Size 1: Standard Single Card
+- **Grid:** 1 column (50% width)
+- **Height:** 200px (fixed)
+- **Layout:** Vertical (flex-column)
+- **Grid Span:** `span 1`
+- **Cards:** LinkedIn, GitHub, Spotify, Twitter, Behance, Twitch, Figma, LeetCode
 
 ```css
-/* Single-width cards (1 column = 50% width) */
-.linkedin-card,
-.github-card,
-.twitter-card,
-.spotify-card,
-.behance-card,
-.twitch-card,
-.figma-card,
-.leetcode-card {
+.card-size-1 {
   grid-column: span 1;
-}
-
-/* Double-width cards (2 columns = 100% width) */
-.map-card,
-.youtube-card,
-.instagram-card,
-.portfolio-card {
-  grid-column: span 2;
-  flex-direction: row;  /* Horizontal layout for content + media */
+  height: 200px;
 }
 ```
 
-### Layout Patterns
-
-#### 2×2 Column Layout (Single Cards)
+**Visual:**
 ```
 ┌─────────┬─────────┐
-│ Card 1  │ Card 2  │
-├─────────┼─────────┤
-│ Card 3  │ Card 4  │
+│ Size 1  │ Size 1  │
+│ 200px   │ 200px   │
 └─────────┴─────────┘
 ```
 
-#### Full-Width with Sidebar (Media Cards)
+#### Size 2: Double-Width Card (Content + Media)
+- **Grid:** 2 columns (100% width)
+- **Height:** 200px (fixed, same as Size 1)
+- **Layout:** Horizontal (flex-row) with content on left, media on right
+- **Grid Span:** `span 2`
+- **Cards:** YouTube, Portfolio
+
+```css
+.card-size-2 {
+  grid-column: span 2;
+  height: 200px;
+  flex-direction: row;
+}
 ```
-┌───────────────────┐
-│ Card 1 │ Thumb    │
-│        │          │
-└───────────────────┘
+
+**Visual:**
 ```
+┌────────────────────────┐
+│ Content │ Thumbnail    │
+│ 200px   │ 200px        │
+└────────────────────────┘
+```
+
+#### Size 4: Featured Card (Double Height)
+- **Grid:** 2 columns (100% width)
+- **Height:** 400px (fixed, 2× Size 1)
+- **Layout:** Flexible (typically vertical for featured content)
+- **Grid Span:** `span 2`
+- **Cards:** Map, Instagram
+- **Use Case:** Featured content, hero sections, detailed displays
+
+```css
+.card-size-4 {
+  grid-column: span 2;
+  height: 400px;
+  flex-direction: column;
+}
+```
+
+**Visual:**
+```
+┌──────────────────────┐
+│                      │
+│     Size 4 Card      │
+│     400px (2x)       │
+│                      │
+└──────────────────────┘
+```
+
+### Complete Layout Example
+
+Typical arrangement with mixed Bento sizes:
+
+```
+┌─────────┬─────────┐
+│ Size 1  │ Size 1  │  Row 1: 2 standard cards
+├─────────┼─────────┤
+│ Size 1  │ Size 1  │  Row 2: 2 standard cards
+├──────────────────┤
+│      Size 2       │  Row 3: 1 double-width card
+├──────────────────┤
+│                  │  Row 4: 1 featured card (2x height)
+│     Size 4       │
+│                  │
+├──────────────────┤
+│      Size 2       │  Row 5: Another double-width card
+├─────────┬─────────┤
+│ Size 1  │ Size 1  │  Row 6: 2 standard cards again
+└─────────┴─────────┘
+```
+
+### Grid Column Span Reference
+
+```css
+/* Size 1: Single-column cards */
+grid-column: span 1;  /* Takes up 1 of 2 columns (50% width) */
+
+/* Size 2 & 4: Full-width cards */
+grid-column: span 2;  /* Takes up both columns (100% width) */
+```
+
+### Height System
+
+| Size | Fixed Height | Ratio | Usage |
+|------|------------|-------|-------|
+| **Size 1** | 200px | 1x | Standard cards, default content |
+| **Size 2** | 200px | 1x | Media cards (same height as Size 1) |
+| **Size 4** | 400px | 2x | Featured/hero cards, detailed content |
+
+**Note:** All heights are fixed (`height: 200px`/`height: 400px`), never using `min-height`, ensuring consistent alignment and layout predictability.
 
 ---
 

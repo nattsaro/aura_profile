@@ -98,11 +98,31 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            min-height: 200px;
             cursor: pointer;
             text-decoration: none;
             color: inherit;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Bento Sizes */
+        /* Size 1: Single card (1 column) */
+        .card-size-1 {
+            grid-column: span 1;
+            height: 200px;
+        }
+
+        /* Size 2: Double card (2 columns, same height as size 1) */
+        .card-size-2 {
+            grid-column: span 2;
+            height: 200px;
+            flex-direction: row;
+        }
+
+        /* Size 4: Featured card (2 columns, 2x height) */
+        .card-size-4 {
+            grid-column: span 2;
+            height: 400px;
+            flex-direction: column;
         }
 
         .card-icon {
@@ -230,14 +250,13 @@
 
         /* Map Card */
         .map-card {
-            grid-column: span 2;
             background: linear-gradient(135deg, #f9f9f9 0%, #ffffff 100%);
         }
 
         .map-container {
             position: relative;
             width: 100%;
-            height: 220px;
+            height: 320px;
             border-radius: 12px;
             background: linear-gradient(135deg, #e8e8e8 0%, #f5f5f5 100%);
             margin-bottom: 16px;
@@ -269,9 +288,10 @@
         /* Instagram Card */
         .instagram-card {
             background: linear-gradient(135deg, #ffffff 0%, #ffffff 100%);
-            grid-column: span 2;
             display: flex;
-            gap: 20px;
+            flex-direction: column;
+            justify-content: flex-start;
+            gap: 0;
         }
 
         .instagram-icon {
@@ -437,7 +457,8 @@
             color: #666;
         }
 
-        /* Single width cards (1 column) */
+        /* Card Size Assignments */
+        /* Size 1: Single cards */
         .linkedin-card,
         .github-card,
         .twitter-card,
@@ -446,16 +467,19 @@
         .twitch-card,
         .figma-card,
         .leetcode-card {
-            grid-column: span 1;
+            /* Inherits card-size-1 class */
         }
 
-        /* Double width cards (2 columns) */
-        .map-card,
+        /* Size 2: Double width (YouTube, Portfolio) */
         .youtube-card,
-        .instagram-card,
         .portfolio-card {
-            grid-column: span 2;
-            flex-direction: row;
+            /* Inherits card-size-2 class */
+        }
+
+        /* Size 4: Featured cards (Map, Instagram) */
+        .map-card,
+        .instagram-card {
+            /* Inherits card-size-4 class */
         }
 
         .youtube-thumbnail,
@@ -497,8 +521,8 @@
 
         <!-- Grid Section -->
         <div class="grid-container">
-            <!-- Map Card -->
-            <a href="https://www.google.com/maps/@19.4246077,-99.133208,13z" class="card map-card" target="_blank">
+            <!-- Map Card (Size 4) -->
+            <a href="https://www.google.com/maps/@19.4246077,-99.133208,13z" class="card map-card card-size-4" target="_blank">
                 <div>
                     <div class="map-container">
                         <div class="map-pin" style="top: 50%; left: 50%; transform: translate(-50%, -50%);"></div>
@@ -508,8 +532,8 @@
                 </div>
             </a>
 
-            <!-- LinkedIn Card -->
-            <a href="https://linkedin.com/in/mrluisfer/" class="card linkedin-card" target="_blank">
+            <!-- LinkedIn Card (Size 1) -->
+            <a href="https://linkedin.com/in/mrluisfer/" class="card linkedin-card card-size-1" target="_blank">
                 <div>
                     <div class="card-icon linkedin-icon">in</div>
                     <div class="card-title">Luis Alvarez</div>
@@ -517,8 +541,8 @@
                 </div>
             </a>
 
-            <!-- Spotify Card -->
-            <a href="https://open.spotify.com/track/3azJifCSqg9fRij2yKIbWz" class="card spotify-card" target="_blank">
+            <!-- Spotify Card (Size 1) -->
+            <a href="https://open.spotify.com/track/3azJifCSqg9fRij2yKIbWz" class="card spotify-card card-size-1" target="_blank">
                 <div>
                     <div class="card-icon spotify-icon">♪</div>
                     <div class="card-title">The Color Violet</div>
@@ -527,8 +551,8 @@
                 </div>
             </a>
 
-            <!-- GitHub Card -->
-            <a href="https://github.com/mrluisfer" class="card github-card" target="_blank">
+            <!-- GitHub Card (Size 1) -->
+            <a href="https://github.com/mrluisfer" class="card github-card card-size-1" target="_blank">
                 <div>
                     <div class="card-icon github-icon">⚙</div>
                     <div class="card-title">Luis Alvarez</div>
@@ -536,8 +560,8 @@
                 <button class="card-button">Follow</button>
             </a>
 
-            <!-- Twitter Card -->
-            <a href="https://twitter.com/_mrluisfer" class="card twitter-card" target="_blank">
+            <!-- Twitter Card (Size 1) -->
+            <a href="https://twitter.com/_mrluisfer" class="card twitter-card card-size-1" target="_blank">
                 <div>
                     <div class="card-icon twitter-icon">𝕏</div>
                     <div class="card-title">Twitter</div>
@@ -546,8 +570,8 @@
                 <button class="card-button">Follow</button>
             </a>
 
-            <!-- YouTube Card -->
-            <a href="https://www.youtube.com/watch?v=rR4n-0KYeKQ" class="card youtube-card" target="_blank">
+            <!-- YouTube Card (Size 2) -->
+            <a href="https://www.youtube.com/watch?v=rR4n-0KYeKQ" class="card youtube-card card-size-2" target="_blank">
                 <div class="youtube-content">
                     <div class="card-icon youtube-icon">▶</div>
                     <div class="card-title">how we write/review code in big tech...</div>
@@ -556,8 +580,8 @@
                 <img src="https://i.ytimg.com/vi/rR4n-0KYeKQ/maxresdefault.jpg" alt="YouTube Video" class="youtube-thumbnail">
             </a>
 
-            <!-- Instagram Card -->
-            <a href="https://www.instagram.com/mrluisfer_/" class="card instagram-card" target="_blank">
+            <!-- Instagram Card (Size 4) -->
+            <a href="https://www.instagram.com/mrluisfer_/" class="card instagram-card card-size-4" target="_blank">
                 <div class="instagram-content">
                     <div class="card-icon instagram-icon">📷</div>
                     <div class="card-title">@mrluisfer_</div>
@@ -570,8 +594,8 @@
                 </div>
             </a>
 
-            <!-- Portfolio Card -->
-            <a href="https://mrluisfer.vercel.app/" class="card portfolio-card" target="_blank">
+            <!-- Portfolio Card (Size 2) -->
+            <a href="https://mrluisfer.vercel.app/" class="card portfolio-card card-size-2" target="_blank">
                 <div>
                     <div style="font-size: 24px; font-weight: 200; color: #333;">mr</div>
                     <div class="card-title">Portfolio 2025 - mrluisfer</div>
@@ -580,8 +604,8 @@
                 <div class="portfolio-thumbnail">LUIS ALVAREZ</div>
             </a>
 
-            <!-- Behance Card -->
-            <a href="https://behance.net/mrluisfer" class="card behance-card" target="_blank">
+            <!-- Behance Card (Size 1) -->
+            <a href="https://behance.net/mrluisfer" class="card behance-card card-size-1" target="_blank">
                 <div>
                     <div class="card-icon behance-icon">B</div>
                     <div class="card-title">Behance</div>
@@ -589,8 +613,8 @@
                 <button class="card-button">Follow</button>
             </a>
 
-            <!-- Twitch Card -->
-            <a href="https://twitch.tv/mrluisfer_" class="card twitch-card" target="_blank">
+            <!-- Twitch Card (Size 1) -->
+            <a href="https://twitch.tv/mrluisfer_" class="card twitch-card card-size-1" target="_blank">
                 <div>
                     <div class="card-icon twitch-icon">🎮</div>
                     <div class="card-title">Twitch</div>
@@ -598,8 +622,8 @@
                 </div>
             </a>
 
-            <!-- Figma Card -->
-            <a href="https://figma.com/@mrluisfeer" class="card figma-card" target="_blank">
+            <!-- Figma Card (Size 1) -->
+            <a href="https://figma.com/@mrluisfeer" class="card figma-card card-size-1" target="_blank">
                 <div>
                     <div class="card-icon figma-icon">◊</div>
                     <div class="card-title">Figma</div>
@@ -607,8 +631,8 @@
                 </div>
             </a>
 
-            <!-- LeetCode Card -->
-            <a href="https://leetcode.com/u/mrluisfeer/" class="card leetcode-card" target="_blank">
+            <!-- LeetCode Card (Size 1) -->
+            <a href="https://leetcode.com/u/mrluisfeer/" class="card leetcode-card card-size-1" target="_blank">
                 <div>
                     <div class="card-icon leetcode-icon">LC</div>
                     <div class="card-title">mrluisfeer</div>
