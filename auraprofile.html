@@ -222,6 +222,16 @@
             background: url('assets/image.png') center 60%/cover no-repeat;
         }
 
+        /* Featured Content Card (Size 1) */
+        .featured-content-card-1 {
+            background: url('assets/image.png') center 60%/cover no-repeat;
+        }
+
+        /* Featured Map Card (Size 1) */
+        .featured-map-card {
+            background: url('assets/maps2.png') center/cover no-repeat;
+        }
+
         .github-card .card-button {
             background-color: #f0f0f0;
             color: #000;
@@ -325,6 +335,17 @@
             font-size: 14px;
             font-weight: 100;
             color: #666;
+        }
+
+        /* Map Card Size 2 */
+        .map-card-size-2 {
+            background: #ffffff;
+            display: flex;
+            gap: 20px;
+        }
+
+        .map-container-size-2 {
+            background: #f0f0f0;
         }
 
         /* Instagram Card */
@@ -542,10 +563,10 @@
     <div class="profile-container">
         <!-- Top Buttons -->
         <div class="top-buttons">
-            <button class="top-button" onclick="document.getElementById('linktreeModal').classList.add('active')" title="Share" style="background-color: white; border: 1px solid #d0d0d0;">
-                <img src="assets/aura-logo-1.png" alt="Aura Logo" style="width: 24px; height: 24px;">
-            </button>
-            <button class="top-button" title="Share Profile">
+            <a href="https://apps.apple.com/us/app/share-aura-share-your-runs/id6742422198" class="top-button" title="Share" target="_blank" style="background-color: white; border: 1px solid #d0d0d0; display: flex; align-items: center; justify-content: center; text-decoration: none;">
+                <img src="assets/aura-logo-1.png" alt="Aura Logo" style="width: 18px; height: 18px; margin-top: -2px;">
+            </a>
+            <button class="top-button" title="Share Profile" style="background-color: white; border: 1px solid #d0d0d0;">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="black" viewBox="0 0 256 256"><path d="M216,112v96a16,16,0,0,1-16,16H56a16,16,0,0,1-16-16V112A16,16,0,0,1,56,96H80a8,8,0,0,1,0,16H56v96H200V112H176a8,8,0,0,1,0-16h24A16,16,0,0,1,216,112ZM93.66,69.66,120,43.31V136a8,8,0,0,0,16,0V43.31l26.34,26.35a8,8,0,0,0,11.32-11.32l-40-40a8,8,0,0,0-11.32,0l-40,40A8,8,0,0,0,93.66,69.66Z"></path></svg>
             </button>
         </div>
@@ -562,16 +583,6 @@
 
         <!-- Grid Section -->
         <div class="grid-container">
-            <!-- Link Bento (Size 0.5) - X.com -->
-            <a href="https://x.com/nattsaro" class="card featured-link-card card-size-0-5" target="_blank">
-                <div class="card-icon featured-link-icon" style="overflow: hidden; position: relative; display: flex; align-items: center; justify-content: center;">
-                    <div style="width: 24px; height: 24px; position: relative; transform: rotate(327.393deg);">
-                        <img src="http://localhost:3845/assets/a99953e99e3955ac18f039912cf770c84520f8ce.png" alt="X Logo" style="width: 100%; height: 100%; object-fit: cover;">
-                    </div>
-                </div>
-                <div class="card-title" style="margin-bottom: 0; text-align: left;">x.com/nattsaro</div>
-            </a>
-
             <!-- Winter Running Gear Card (Size 4) -->
             <a href="#" class="card winter-gear-card card-size-4" target="_blank">
                 <div style="display: flex; flex-direction: column; height: 100%; padding: 0 8px; gap: 10px;">
@@ -582,6 +593,16 @@
                         <div style="background: url('assets/shorts.png') center/75% no-repeat #f5f5f5; width: calc(50% - 4px); height: 177px; border-radius: 8px; border: 1px solid #e0e0e0;"></div>
                     </div>
                 </div>
+            </a>
+
+            <!-- Link Bento (Size 0.5) - X.com -->
+            <a href="https://x.com/nattsaro" class="card featured-link-card card-size-0-5" target="_blank">
+                <div class="card-icon featured-link-icon" style="overflow: hidden; position: relative; display: flex; align-items: center; justify-content: center;">
+                    <div style="width: 24px; height: 24px; position: relative; transform: rotate(327.393deg);">
+                        <img src="http://localhost:3845/assets/a99953e99e3955ac18f039912cf770c84520f8ce.png" alt="X Logo" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                </div>
+                <div class="card-title" style="margin-bottom: 0; text-align: left;">x.com/nattsaro</div>
             </a>
 
             <!-- Featured Content Card (Size 4) -->
@@ -602,7 +623,37 @@
                 </div>
             </a>
 
-            <!-- Map Card (Size 4) -->
+            <!-- Featured Content Card (Size 1) -->
+            <a href="#" class="card featured-content-card-1 card-size-1" target="_blank">
+                <div style="display: flex; flex-direction: column; justify-content: flex-end; height: 100%;">
+                    <div style="background-color: rgba(255, 255, 255, 0.6); padding: 8px 24px; border-radius: 12px; display: flex; align-items: center; width: fit-content;">
+                        <p style="font-size: 16px; font-weight: 100; margin: 0; color: #000; white-space: nowrap;">me ignoring texts</p>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Featured Map Card (Size 1) -->
+            <a href="#" class="card featured-map-card card-size-1" target="_blank">
+            </a>
+
+            <!-- Empty Map Card (Size 4) with Timestamp -->
+            <a href="#" class="card map-card card-size-4" target="_blank">
+                <div style="display: flex; flex-direction: column; height: 100%; gap: 0;">
+                    <!-- Image/Map section with centered text -->
+                    <div style="flex: 4; background: url('assets/medal.png') center 60%/cover no-repeat; border-radius: 12px; display: flex; align-items: flex-start; justify-content: center; padding-top: 24px;">
+                        <div style="background-color: rgba(255, 255, 255, 0.6); padding: 8px 24px; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                            <p style="font-size: 16px; font-weight: 100; margin: 0; color: #000; white-space: nowrap;">PR: KLSC MARATHON 2025</p>
+                        </div>
+                    </div>
+                    <!-- Bottom section with timestamp -->
+                    <div style="flex: 1; display: flex; align-items: center; justify-content: center; padding-top: 12px;">
+                        <div style="font-size: 72px; font-weight: 100; color: #000; letter-spacing: 0.05em;">4:08:02</div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- HIDDEN CARDS BELOW - Commented out -->
+            <!--
             <a href="https://www.google.com/maps/@19.4246077,-99.133208,13z" class="card map-card card-size-4" target="_blank">
                 <div>
                     <div class="map-container">
@@ -613,7 +664,15 @@
                 </div>
             </a>
 
-            <!-- LinkedIn Card (Size 1) -->
+            <a href="#" class="card map-card-size-2 card-size-2" target="_blank">
+                <div style="display: flex; gap: 20px; align-items: stretch; height: 100%;">
+                    <div style="flex: 1; display: flex; flex-direction: column; justify-content: center;">
+                        <div style="font-size: 14px; color: #999;">Location</div>
+                    </div>
+                    <div class="map-container-size-2" style="width: 200px; height: 100%; border-radius: 12px; flex-shrink: 0;"></div>
+                </div>
+            </a>
+
             <a href="https://linkedin.com/in/mrluisfer/" class="card linkedin-card card-size-1" target="_blank">
                 <div>
                     <div class="card-icon linkedin-icon">in</div>
@@ -622,7 +681,6 @@
                 </div>
             </a>
 
-            <!-- Spotify Card (Size 1) -->
             <a href="https://open.spotify.com/track/3azJifCSqg9fRij2yKIbWz" class="card spotify-card card-size-1" target="_blank">
                 <div>
                     <div class="card-icon spotify-icon">♪</div>
@@ -632,7 +690,6 @@
                 </div>
             </a>
 
-            <!-- GitHub Card (Size 1) -->
             <a href="https://github.com/mrluisfer" class="card github-card card-size-1" target="_blank">
                 <div>
                     <div class="card-icon github-icon">⚙</div>
@@ -641,7 +698,6 @@
                 <button class="card-button">Follow</button>
             </a>
 
-            <!-- Twitter Card (Size 1) -->
             <a href="https://twitter.com/_mrluisfer" class="card twitter-card card-size-1" target="_blank">
                 <div>
                     <div class="card-icon twitter-icon">𝕏</div>
@@ -651,7 +707,6 @@
                 <button class="card-button">Follow</button>
             </a>
 
-            <!-- YouTube Card (Size 2) -->
             <a href="https://www.youtube.com/watch?v=rR4n-0KYeKQ" class="card youtube-card card-size-2" target="_blank">
                 <div class="youtube-content">
                     <div class="card-icon youtube-icon">▶</div>
@@ -661,7 +716,6 @@
                 <img src="https://i.ytimg.com/vi/rR4n-0KYeKQ/maxresdefault.jpg" alt="YouTube Video" class="youtube-thumbnail">
             </a>
 
-            <!-- Instagram Card (Size 4) -->
             <a href="https://www.instagram.com/mrluisfer_/" class="card instagram-card card-size-4" target="_blank">
                 <div class="instagram-content">
                     <div class="card-icon instagram-icon">📷</div>
@@ -675,7 +729,6 @@
                 </div>
             </a>
 
-            <!-- Portfolio Card (Size 2) -->
             <a href="https://mrluisfer.vercel.app/" class="card portfolio-card card-size-2" target="_blank">
                 <div>
                     <div style="font-size: 24px; font-weight: 200; color: #333;">mr</div>
@@ -685,7 +738,6 @@
                 <div class="portfolio-thumbnail">LUIS ALVAREZ</div>
             </a>
 
-            <!-- Behance Card (Size 1) -->
             <a href="https://behance.net/mrluisfer" class="card behance-card card-size-1" target="_blank">
                 <div>
                     <div class="card-icon behance-icon">B</div>
@@ -694,7 +746,6 @@
                 <button class="card-button">Follow</button>
             </a>
 
-            <!-- Twitch Card (Size 1) -->
             <a href="https://twitch.tv/mrluisfer_" class="card twitch-card card-size-1" target="_blank">
                 <div>
                     <div class="card-icon twitch-icon">🎮</div>
@@ -703,7 +754,6 @@
                 </div>
             </a>
 
-            <!-- Figma Card (Size 1) -->
             <a href="https://figma.com/@mrluisfeer" class="card figma-card card-size-1" target="_blank">
                 <div>
                     <div class="card-icon figma-icon">◊</div>
@@ -712,7 +762,6 @@
                 </div>
             </a>
 
-            <!-- LeetCode Card (Size 1) -->
             <a href="https://leetcode.com/u/mrluisfeer/" class="card leetcode-card card-size-1" target="_blank">
                 <div>
                     <div class="card-icon leetcode-icon">LC</div>
@@ -720,6 +769,7 @@
                     <div class="card-subtitle">leetcode.com</div>
                 </div>
             </a>
+            -->
         </div>
     </div>
 </body>
