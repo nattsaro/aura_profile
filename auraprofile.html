@@ -105,10 +105,19 @@
         }
 
         /* Bento Sizes */
-        /* Size 0.5: Compact banner (2 columns, half height) */
+        /* Size 0.5: Compact banner (2 columns, compact height) */
         .card-size-0-5 {
             grid-column: span 2;
-            height: 120px;
+            height: 96px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .card-size-0-5 .card-icon {
+            margin-bottom: 0;
+            flex-shrink: 0;
         }
 
         /* Size 1: Single card (1 column) */
@@ -183,6 +192,16 @@
         }
 
         .github-icon {
+            background-color: #000;
+            color: white;
+        }
+
+        /* Featured Link Card (Size 0.5) */
+        .featured-link-card {
+            background: #ffffff;
+        }
+
+        .featured-link-icon {
             background-color: #000;
             color: white;
         }
@@ -527,11 +546,10 @@
 
         <!-- Grid Section -->
         <div class="grid-container">
-            <!-- Banner Card (Size 0.5) -->
-            <a href="#" class="card card-size-0-5" target="_blank" style="background: #ffffff; display: flex; align-items: center; justify-content: center;">
-                <div style="text-align: center;">
-                    <div style="font-size: 14px; font-weight: 100; color: #000;">Featured Banner</div>
-                </div>
+            <!-- Link Bento (Size 0.5) -->
+            <a href="#" class="card featured-link-card card-size-0-5" target="_blank">
+                <div class="card-icon featured-link-icon">🔗</div>
+                <div class="card-title" style="margin-bottom: 0; font-size: 14px;">Featured Link</div>
             </a>
 
             <!-- Map Card (Size 4) -->

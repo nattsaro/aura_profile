@@ -921,27 +921,36 @@ The card grid uses CSS Grid with a 2-column layout and fixed-height Bento card s
 
 The design uses a **4-tier Bento size system** with fixed heights for consistent, predictable layouts:
 
-#### Size 0.5: Compact Banner
+#### Size 0.5: Link Bento
 - **Grid:** 2 columns (100% width)
-- **Height:** 120px (fixed, 0.5x Size 1)
-- **Layout:** Flexible (typically centered content)
+- **Height:** 96px (fixed, compact)
+- **Layout:** Horizontal flex (icon on left, content on right)
 - **Grid Span:** `span 2`
-- **Cards:** Featured banners, announcements, quick promotions
-- **Use Case:** Top-of-page highlights, temporary announcements, promotional content
+- **Cards:** Featured link banners, featured content, quick highlights
+- **Use Case:** Top-of-page highlights, featured links, quick navigation
 
 ```css
 .card-size-0-5 {
   grid-column: span 2;
-  height: 120px;
+  height: 96px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 40px;
+}
+
+.card-size-0-5 .card-icon {
+  margin-bottom: 0;
+  flex-shrink: 0;
 }
 ```
 
 **Visual:**
 ```
-┌──────────────────────┐
-│   Compact Banner     │
-│      120px (0.5x)    │
-└──────────────────────┘
+┌────────────────────────────────────┐
+│ [Icon]    Featured Link Text        │
+│  96px (compact with breathing room) │
+└────────────────────────────────────┘
 ```
 
 #### Size 1: Standard Single Card
@@ -1021,7 +1030,7 @@ Typical arrangement with mixed Bento sizes:
 
 ```
 ├──────────────────┤
-│    Size 0.5      │  Row 1: Compact banner at top
+│  Link Bento      │  Row 1: Compact banner at top
 ├─────────┬─────────┤
 │ Size 1  │ Size 1  │  Row 2: 2 standard cards
 ├─────────┼─────────┤
@@ -1053,18 +1062,18 @@ grid-column: span 2;  /* Takes up both columns (100% width) */
 
 | Size | Fixed Height | Ratio | Usage |
 |------|------------|-------|-------|
-| **Size 0.5** | 120px | 0.5x | Compact banners, announcements |
+| **Link Bento (0.5)** | 96px | 0.4x | Featured link banners, quick navigation |
 | **Size 1** | 240px | 1x | Standard cards, default content |
 | **Size 2** | 240px | 1x | Media cards (same height as Size 1) |
 | **Size 4** | 480px | 2x | Featured/hero cards, detailed content |
 
-**Note:** All heights are fixed (`height: 120px`/`height: 240px`/`height: 480px`), never using `min-height`, ensuring consistent alignment and layout predictability.
+**Note:** All heights are fixed (`height: 96px`/`height: 240px`/`height: 480px`), never using `min-height`, ensuring consistent alignment and layout predictability.
 
 **Height Relationships:**
-- Size 0.5 = 120px (smallest)
-- Size 1 = 240px (2× Size 0.5)
+- Link Bento = 96px (compact with breathing room for icon)
+- Size 1 = 240px (2.5× Link Bento)
 - Size 2 = 240px (same as Size 1)
-- Size 4 = 480px (2× Size 1, 4× Size 0.5)
+- Size 4 = 480px (2× Size 1)
 
 ---
 
